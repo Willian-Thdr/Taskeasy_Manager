@@ -3,11 +3,32 @@
         xmlns:vm="using:Taskeasy_Manager.Source.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="200"
         x:Class="Taskeasy_Manager.Source.Models.MainWindow"
         x:DataType="vm:MainViewModel"
-        Title="Taskeasy_Manager">
-    <Canvas>
-    
-    </Canvas>
+        Title="Taskeasy_Manager"
+        MinWidth="250" MinHeight="200"
+        Width="250" Height="200"
+        MaxWidth="500" MaxHeight="400">
+        <Window.Background>
+            <LinearGradientBrush StartPoint="300,250" EndPoint="75,0">
+                <GradientStop Color="#FFDF2808" Offset="0"/>
+                <GradientStop Color="#FF06326D" Offset="1"/>
+            </LinearGradientBrush>
+        </Window.Background>
+
+    <Grid>
+        <Label Content="Menu" FontSize="18" Margin="0, 20, 0, 0" HorizontalAlignment="Center" 
+        VerticalAlignment="Top" FontWeight="Bold"/>
+
+        <Border Height="2" Background="#50FFFFFF" Margin="0, 48, 0, 0" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+
+        <Button Background="#20FFFFFF" BorderBrush="Black" Content="Create new task" 
+        Padding="5, 2, 5, 2" Margin="0, 80, 0, 0" HorizontalAlignment="Center" 
+        VerticalAlignment="Top" CornerRadius="20" Click="CreateTask"/>
+
+        <Button Background="#20FFFFFF" BorderBrush="Black" Content="Load task" 
+        Padding="5, 2, 5, 2" Margin="0, 0, 0, 60" HorizontalAlignment="Center" 
+        VerticalAlignment="Bottom" CornerRadius="20" Click="LoadTask"/>
+    </Grid>
 </Window>
