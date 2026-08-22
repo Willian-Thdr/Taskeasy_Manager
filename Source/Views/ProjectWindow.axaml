@@ -3,29 +3,27 @@
         xmlns:vm="using:Taskeasy_Manager.Source.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="200"
+        mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
         x:Class="Taskeasy_Manager.Source.Models.ProjectWindow"
         x:DataType="vm:SecoundViewModel"
         Title="Taskeasy_Manager"
         Background="#FF474747">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
-            <DataGrid Margin="20" ItemsSource="{Binding Rows}"
-                AutoGenerateColumns="False" CanUserResizeColumns="True"
-                GridLinesVisibility="All" IsReadOnly="False" Background="Transparent">
-    
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Tarefa" Binding="{ReflectionBinding Task}"/>
-                    <DataGridTextColumn Header="Importância" Binding="{ReflectionBinding Importance}"/>
-                    <DataGridTextColumn Header="Dia Inicial" Binding="{ReflectionBinding Data}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
+        <DataGrid Margin="0" ItemsSource="{Binding Rows}"
+            AutoGenerateColumns="False" CanUserResizeColumns="True"
+            GridLinesVisibility="All" IsReadOnly="False" Background="Transparent">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tarefa" Binding="{ReflectionBinding Task}"/>
+                <DataGridTextColumn Header="Importância" Binding="{ReflectionBinding Importance}"/>
+                <DataGridTextColumn Header="Dia Inicial" Binding="{ReflectionBinding Data}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Button Grid.Row="1" Content="Criar nova tarefa" HorizontalAlignment="Right" 
             Click="CreateTask" Background="Transparent" Margin="0, 0, 0, 20"/>
