@@ -18,8 +18,8 @@ public partial class MainWindow : Window
         projectWindow = new ProjectWindow();
         projectWindow.MinWidth = 640;
         projectWindow.MinHeight = 480;
-        projectWindow.Width = 1080;
-        projectWindow.Height = 720;
+        projectWindow.MaxWidth = 1080;
+        projectWindow.MaxHeight = 720;
         projectWindow.Show();
     }
 
