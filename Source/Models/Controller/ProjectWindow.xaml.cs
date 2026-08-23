@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.IO;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Template;
@@ -26,12 +27,8 @@ public partial class ProjectWindow : Window
         SecoundViewModel.Rows.Add(new TaskList("", "", ""));
     }
 
-    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    private void SaveProj(object sender, RoutedEventArgs args)
     {
-        if (value is int count)
-        {
-            return count * 32 + 40;
-        }
-        return 200;
+        SaveProcess.Connect(this.Title);
     }
 }

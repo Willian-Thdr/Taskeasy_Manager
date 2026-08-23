@@ -1,26 +1,26 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Taskeasy_Manager.Source.Temp;
 
 namespace Taskeasy_Manager.Source.Models;
 public partial class MainWindow : Window
 {
-    private ProjectWindow projectWindow;
-
     public MainWindow()
     {
         InitializeComponent();
+
+        this.Closing += (s, e) =>
+        {
+            e.Cancel = false;
+        };
     }
 
     public void CreateTask(object sender, RoutedEventArgs args)
     {
         Console.WriteLine("Criar");
-        projectWindow = new ProjectWindow();
-        projectWindow.MinWidth = 640;
-        projectWindow.MinHeight = 480;
-        projectWindow.MaxWidth = 1080;
-        projectWindow.MaxHeight = 720;
-        projectWindow.Show();
+        InitDataProj init = new();
+        init.Show();
     }
 
     public void LoadTask(object sender, RoutedEventArgs args)

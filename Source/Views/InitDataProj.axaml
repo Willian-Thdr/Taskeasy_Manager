@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Taskeasy_Manager.Source.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="150"
+        x:Class="Taskeasy_Manager.Source.Temp.InitDataProj"
+        x:DataType="vm:MainViewModel"
+        MinWidth="300" MinHeight="150"
+        MaxWidth="300" MaxHeight="150"
+        Title="Criar Lista"
+        Background="#FF474747">
+    <Grid>
+        <Label Content="Criar lista" HorizontalAlignment="Center" 
+               FontSize="20" FontWeight="Bold" Margin="0, 5, 0, 0"/>
+
+        <Label Content="Nome:" VerticalAlignment="Center"
+               Margin="20, 5, 0, 0"/>
+
+        <Border BorderBrush="Black" VerticalAlignment="Center" Margin="70, 5, 20, 0"
+                BorderThickness="1" CornerRadius="20">
+            <TextBox BorderBrush="Transparent" BorderThickness="0" CornerRadius="20"
+                     Watermark="Nome da lista" HorizontalContentAlignment="Center"
+                     x:Name="ProjName" Background="#50FFFFFF"/>
+        </Border>
+
+        <Button Content="Criar" Background="#50FFFFFF" BorderBrush="Black"
+                CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0, 5, 20, 10" Click="CreateFile"/>
+    </Grid>
+</Window>
