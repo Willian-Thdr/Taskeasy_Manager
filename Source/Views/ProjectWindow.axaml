@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
-        x:Class="Taskeasy_Manager.Source.Models.ProjectWindow"
+        x:Class="Taskeasy_Manager.Source.Models.Controller.ProjectWindow"
         x:DataType="vm:SecoundViewModel"
         Title="Taskeasy_Manager"
         Background="#FF474747">
@@ -14,14 +14,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Margin="0" ItemsSource="{Binding Rows}"
+        <DataGrid Margin="0" ItemsSource="{Binding Rows}" x:Name="GridList"
             AutoGenerateColumns="False" CanUserResizeColumns="True"
             GridLinesVisibility="All" IsReadOnly="False" Background="Transparent">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Tarefa" Binding="{ReflectionBinding Task}"/>
-                <DataGridTextColumn Header="Importância" Binding="{ReflectionBinding Importance}"/>
-                <DataGridTextColumn Header="Dia Inicial" Binding="{ReflectionBinding Data}"/>
+                <DataGridTextColumn Header="Tarefa" Binding="{Binding TaskColumn}"/>
+                <DataGridTextColumn Header="Importância" Binding="{Binding ImportanceColumn}"/>
+                <DataGridTextColumn Header="Dia Inicial" Binding="{Binding DataColumn}"/>
             </DataGrid.Columns>
         </DataGrid>
 

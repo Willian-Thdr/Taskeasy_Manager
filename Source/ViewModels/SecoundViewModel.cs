@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using Taskeasy_Manager.Source.Template;
@@ -7,7 +8,7 @@ namespace Taskeasy_Manager.Source.ViewModels;
 
 public partial class SecoundViewModel : ViewModelBase
 {
-    public static ObservableCollection<TaskList> Rows { get; } = new();
+    public static ObservableCollection<TaskList> Rows { get; set; } = new();
 
     public SecoundViewModel()
     {

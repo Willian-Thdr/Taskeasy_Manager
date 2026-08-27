@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Temp;
 
-namespace Taskeasy_Manager.Source.Models;
+namespace Taskeasy_Manager.Source.Models.Controller;
 public partial class MainWindow : Window
 {
     public MainWindow()

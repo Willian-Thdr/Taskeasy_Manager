@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Taskeasy_Manager.Source.Models;
+using Taskeasy_Manager.Source.Models.Controller;
 using Taskeasy_Manager.Source.ViewModels;
 
 namespace Taskeasy_Manager;

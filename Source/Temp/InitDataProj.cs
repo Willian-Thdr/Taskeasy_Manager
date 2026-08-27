@@ -1,9 +1,7 @@
 using System;
-using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Platform.Storage;
-using Taskeasy_Manager.Source.Models;
+using Taskeasy_Manager.Source.Models.Controller;
 
 namespace Taskeasy_Manager.Source.Temp;
 

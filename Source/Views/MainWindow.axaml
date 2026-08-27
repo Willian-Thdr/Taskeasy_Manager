@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="200"
-        x:Class="Taskeasy_Manager.Source.Models.MainWindow"
+        x:Class="Taskeasy_Manager.Source.Models.Controller.MainWindow"
         x:DataType="vm:MainViewModel"
         Title="Taskeasy_Manager"
         MinWidth="250" MinHeight="200"
