@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Template;
 using Taskeasy_Manager.Source.ViewModels;
+using Taskeasy_Manager.Source.Helpers;
 
 namespace Taskeasy_Manager.Source.Models.Controller;
 
@@ -38,23 +39,25 @@ public partial class ProjectWindow : Window
         WriteFile(WriteInfosModel(task, importance, data));
     }
 
-    private static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3)
+    public static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3)
     {
+        FilterWord filter = new FilterWord();
+
         List<string> list = new List<string>();
 
         info1.ForEach(taskLine => list.Add($"Task: {taskLine}"));
         info2.ForEach(taskLine => list.Add($"Importance: {taskLine}"));
-        info3.ForEach(taskLine => list.Add($"data: {taskLine}"));
+        info3.ForEach(taskLine => list.Add($"Data: {taskLine}"));
 
         return $"""
         Task:
-        {FilterWordTask(list, "Task:", "Task: ", "")}
+        {filter.FilterWordTask(list, "Task:", "Task: ", "")}
 
         Importance:
-        {FilterWordTask(list, "Importance:", "Importance: ", "")}
+        {filter.FilterWordTask(list, "Importance:", "Importance: ", "")}
 
         Data:
-        {FilterWordTask(list, "Data:", "Data: ", "")}
+        {filter.FilterWordTask(list, "Data:", "Data: ", "")}
         """;
     }
 
@@ -72,12 +75,5 @@ public partial class ProjectWindow : Window
         {
             File.WriteAllText(fileName, $"ERROR: {e}");
         }
-    }
-
-    public static string FilterWordTask(List<string> words, string keyWord, string remove, string replace)
-    {
-        string strList = string.Join(",\n", words.Where(x => x.StartsWith(keyWord)).Select(x => x.Replace(remove, replace).Trim()).Where(x => !string.IsNullOrEmpty(x)));
-
-        return strList;
     }
 }
