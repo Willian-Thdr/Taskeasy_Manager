@@ -5,9 +5,9 @@ namespace Taskeasy_Manager.Source.Helpers;
 
 public class FilterWord
 {
-    public string FilterWordTask(List<string> words, string keyWord, string remove, string replace)
+    public string FilterWordTask(List<string> words)
     {
-        string strList = string.Join(",\n", words.Where(x => x.StartsWith(keyWord)).Select(x => x.Replace(remove, replace).Trim()).Where(x => !string.IsNullOrEmpty(x)));
+        string strList = string.Join(",\n", words);
 
         return strList;
     }

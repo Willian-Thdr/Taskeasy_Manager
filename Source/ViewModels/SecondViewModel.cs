@@ -6,24 +6,28 @@ using Taskeasy_Manager.Source.Template;
 
 namespace Taskeasy_Manager.Source.ViewModels;
 
-public partial class SecoundViewModel : ViewModelBase
+public partial class SecondViewModel : ViewModelBase
 {
     public static ObservableCollection<TaskList> Rows { get; set; } = new();
 
-    public SecoundViewModel()
+    public static void InitialLines(string verify)
     {
-        InitialLines("Execute");
-    }
+        List<string> task = new List<string>();
+        List<string> importance = new List<string>();
+        List<string> data = new List<string>();
 
-    public void InitialLines(string verify)
-    {
         switch (verify)        
         {
             case "Execute":
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    Rows.Add(new TaskList("", "", ""));
-                    Console.WriteLine(i);
+                    TaskList taskList = new TaskList();
+
+                    task.Add("");
+                    importance.Add("");
+                    data.Add("");
+
+                    Rows.Add(taskList.Connect(task, importance, data));
                 }
                 break;
 

@@ -2,6 +2,7 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Models.Controller;
+using Taskeasy_Manager.Source.ViewModels;
 
 namespace Taskeasy_Manager.Source.Temp;
 
@@ -26,12 +27,14 @@ public partial class InitDataProj : Window
             if (string.IsNullOrEmpty(title))
                 return;
 
+            ProjectWindow.load = false;
             projectWindow = new ProjectWindow();
             projectWindow.MinWidth = 640;
             projectWindow.MinHeight = 480;
             projectWindow.MaxWidth = 1080;
             projectWindow.MaxHeight = 720;
             projectWindow.Title = title;
+            SecondViewModel.InitialLines("Execute");
             projectWindow.Show();
 
             this.Close();

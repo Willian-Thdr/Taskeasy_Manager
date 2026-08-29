@@ -7,33 +7,50 @@ using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Template;
 using Taskeasy_Manager.Source.ViewModels;
 using Taskeasy_Manager.Source.Helpers;
+using System.Threading.Tasks;
 
 namespace Taskeasy_Manager.Source.Models.Controller;
 
 public partial class ProjectWindow : Window
 {
+        public static bool load = false;
+
     public ProjectWindow()
     {
         InitializeComponent();
 
-        DataContext = new SecoundViewModel();
+        DataContext = new SecondViewModel();
+
+        // switch (load)
+        // {
+            // case true:
+                // 
+                // break;
+        // }
 
         this.Closing += (s, e) =>
         {
             e.Cancel = false;
+            SecondViewModel.Rows.Clear();
         };
     }
 
     private void CreateTask(object sender, RoutedEventArgs args)
     {
-        SecoundViewModel.Rows.Add(new TaskList("", "", ""));
+        TaskList taskList = new TaskList();
+
+        List<string> task = [""];
+        List<string> importance = [""];
+        List<string> data = [""];
+
+        SecondViewModel.Rows.Add(taskList.Connect(task, importance, data));
     }
 
     private void SaveProj(object sender, RoutedEventArgs args)
     {
-        var task = SecoundViewModel.Rows.Select(p => p.TaskColumn).ToList();
-        var importance = SecoundViewModel.Rows.Select(p => p.ImportanceColumn).ToList();
-        var data = SecoundViewModel.Rows.Select(p => p.DataColumn).ToList();
+        var task = SecondViewModel.Rows.Select(p => p.TaskColumn).ToList();
+        var importance = SecondViewModel.Rows.Select(p => p.ImportanceColumn).ToList();
+        var data = SecondViewModel.Rows.Select(p => p.DataColumn).ToList();
 
         SaveProcess.Connect(this.Title);
         WriteFile(WriteInfosModel(task, importance, data));
@@ -43,21 +60,15 @@ public partial class ProjectWindow : Window
     {
         FilterWord filter = new FilterWord();
 
-        List<string> list = new List<string>();
-
-        info1.ForEach(taskLine => list.Add($"Task: {taskLine}"));
-        info2.ForEach(taskLine => list.Add($"Importance: {taskLine}"));
-        info3.ForEach(taskLine => list.Add($"Data: {taskLine}"));
-
         return $"""
         Task:
-        {filter.FilterWordTask(list, "Task:", "Task: ", "")}
-
+        {filter.FilterWordTask(info1)}
         Importance:
-        {filter.FilterWordTask(list, "Importance:", "Importance: ", "")}
-
+        {filter.FilterWordTask(info2)}
         Data:
-        {filter.FilterWordTask(list, "Data:", "Data: ", "")}
+        {filter.FilterWordTask(info3)}
+
+        End
         """;
     }
 
