@@ -23,11 +23,16 @@ public class OpenExplorer
     public async void Open(Window window)
     {
         TaskList task;
+
+        var startPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}/Taskeasy Manager/Data";
+        var startFolder = await window.StorageProvider.TryGetFolderFromPathAsync(startPath);
+
         var file = await window.StorageProvider.OpenFilePickerAsync(
             new FilePickerOpenOptions
             {
                 Title = "Select one file",
                 AllowMultiple = false,
+                SuggestedStartLocation = startFolder,
                 FileTypeFilter = new[]
                 {
                     new FilePickerFileType("Task")
@@ -49,6 +54,12 @@ public class OpenExplorer
             var fileSelected = file[0];
             way = fileSelected.Path.LocalPath;
             name = Path.GetFileNameWithoutExtension(fileSelected.Name);
+        }
+
+        if (way == null)
+        {
+            window.Close();
+            return;
         }
 
         window.Title = name;
