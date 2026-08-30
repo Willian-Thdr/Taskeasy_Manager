@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Taskeasy_Manager.Source.Helpers;
 
@@ -9,6 +8,6 @@ public class FilterWord
     {
         string strList = string.Join(",\n", words);
 
-        return strList;
+        return strList.Trim();
     }
 }

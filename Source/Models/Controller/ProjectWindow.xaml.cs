@@ -21,13 +21,6 @@ public partial class ProjectWindow : Window
 
         DataContext = new SecondViewModel();
 
-        // switch (load)
-        // {
-            // case true:
-                // 
-                // break;
-        // }
-
         this.Closing += (s, e) =>
         {
             e.Cancel = false;
@@ -63,8 +56,10 @@ public partial class ProjectWindow : Window
         return $"""
         Task:
         {filter.FilterWordTask(info1)}
+
         Importance:
         {filter.FilterWordTask(info2)}
+        
         Data:
         {filter.FilterWordTask(info3)}
 
