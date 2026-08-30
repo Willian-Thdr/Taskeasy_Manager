@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Taskeasy_Manager.Source.Template;
 public class TaskList

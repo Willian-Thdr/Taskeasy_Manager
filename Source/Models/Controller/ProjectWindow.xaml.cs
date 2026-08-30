@@ -8,12 +8,15 @@ using Taskeasy_Manager.Source.Template;
 using Taskeasy_Manager.Source.ViewModels;
 using Taskeasy_Manager.Source.Helpers;
 using System.Threading.Tasks;
+using Avalonia.VisualTree;
+using Avalonia.Media;
+using Avalonia.Input;
 
 namespace Taskeasy_Manager.Source.Models.Controller;
 
 public partial class ProjectWindow : Window
 {
-        public static bool load = false;
+    public static bool load = false;
 
     public ProjectWindow()
     {
@@ -59,7 +62,7 @@ public partial class ProjectWindow : Window
 
         Importance:
         {filter.FilterWordTask(info2)}
-        
+
         Data:
         {filter.FilterWordTask(info3)}
 
@@ -77,9 +80,45 @@ public partial class ProjectWindow : Window
         try
         {
             File.WriteAllText(fileName, txt.ToString());
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             File.WriteAllText(fileName, $"ERROR: {e}");
+        }
+    }
+
+
+    private void Randomized(object sender, RoutedEventArgs args)
+    {
+        List<string> tList = SecondViewModel.Rows.Select(t => t.TaskColumn).ToList();
+        int selectIndex = 0;
+        bool randomized = false;
+
+        selectIndex = Random.Shared.Next(1, tList.Count+1); // Sempre que for utilizar, subtrair por 1.        
+        randomized = true;
+        Highlight(selectIndex, randomized);
+        randomized = false;
+    }
+
+    private void Highlight(int selectIndex, bool randomized)
+    {
+        if (randomized == true)
+        {
+            foreach (var row in GridList.GetVisualDescendants().OfType<DataGridRow>())
+            {
+                if (row.Index == selectIndex-1)
+                    row.Background = new SolidColorBrush(Color.Parse("#4e8be6"));
+                else
+                    row.Background = Brushes.Transparent;
+
+                this.KeyDown += (s, e) =>
+                {
+                    if (e.Key == Key.Escape)
+                    {
+                        row.Background = Brushes.Transparent;
+                    }
+                };
+            }            
         }
     }
 }
