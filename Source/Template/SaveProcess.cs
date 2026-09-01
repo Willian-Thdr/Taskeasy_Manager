@@ -46,4 +46,35 @@ public class SaveProcess
     
         File.WriteAllText(fileName, "");
     }
+
+    public static void CreateFolder()
+    {
+        string mainWay = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    
+        string save = Path.Combine(mainWay, "Taskeasy Manager");
+    
+        if (!Directory.Exists(save))
+        {
+            try
+            {
+                Directory.CreateDirectory(save);
+            } catch(Exception e)
+            {
+                NotificationWindow.Message($"ERROR: {e}");
+            }
+        }
+        
+        string dataFile= Path.Combine(save, "Data");
+    
+        if (!Directory.Exists(dataFile))
+        {
+            try
+            {
+                Directory.CreateDirectory(dataFile);
+            } catch(Exception e)
+            {
+                NotificationWindow.Message($"ERROR: {e}");
+            }
+        }
+    }
 }

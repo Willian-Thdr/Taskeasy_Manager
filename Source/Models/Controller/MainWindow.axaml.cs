@@ -10,6 +10,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        SaveProcess.CreateFolder();
 
         this.Closing += (s, e) =>
         {
