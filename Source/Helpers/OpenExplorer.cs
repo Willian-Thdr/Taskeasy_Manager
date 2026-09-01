@@ -69,21 +69,31 @@ public class OpenExplorer
 
     public void ReadArchive(string txt)
     {
-        TaskList task = new TaskList();
+        try 
+        {
+            TaskList task = new TaskList();
+    
+            List<string> Task = new();
+            List<string> Importance = new();
+            List<string> Data = new();
+            List<string> Time = new();
 
-        List<string> Task = new();
-        List<string> Importance = new();
-        List<string> Data = new();
+            string? numColumn = GetBetween(txt, "ColumnNumber:", "Task:");
+            string taskText = GetBetween(txt, "Task:", "Importance:");
+            string importanceText = GetBetween(txt, "Importance:", "Data:");
+            string dataText = GetBetween(txt, "Data:", "Time:");
+            string timeText = GetBetween(txt, "Time:", "End");
 
-        string taskText = GetBetween(txt, "Task:", "Importance:");
-        string importanceText = GetBetween(txt, "Importance:", "Data:");
-        string dataText = GetBetween(txt, "Data:", "End");
-
-        Task = taskText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
-        Importance = importanceText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
-        Data = dataText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
-
-        LoadLines(Task, Importance, Data, "Load");
+            Task = taskText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            Importance = importanceText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            Data = dataText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            Time = timeText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+    
+            LoadLines(int.Parse(numColumn), Task, Importance, Data, Time, "Load");
+        } catch (Exception e)
+        {
+            NotificationWindow.Message($"ERROR: {e}");
+        }
     }
 
     public string GetBetween(string text, string start, string end)
@@ -103,24 +113,26 @@ public class OpenExplorer
         return text.Substring(startIndex, endIndex - startIndex).Trim();
     }
 
-    public static void LoadLines(List<string> tList, List<string> iList, List<string> dList, string verify)
+    public static void LoadLines(int num, List<string> tList, List<string> iList, List<string> dList, List<string> timeList, string verify)
     {
         List<string> task = new List<string>();
         List<string> importance = new List<string>();
         List<string> data = new List<string>();
+        List<string> time = new List<string>();
 
         switch (verify)
         {
             case "Load":
-                for (int i = 0; i < tList.Count; i++)
+                for (int i = 0; i < num; i++)
                 {
                     TaskList taskList = new TaskList();
 
-                    task.Add(tList[i]);
-                    importance.Add(iList[i]);
-                    data.Add(dList[i]);
+                    task.Add(tList[i].Trim());
+                    importance.Add(iList[i].Trim());
+                    data.Add(dList[i].Trim());
+                    time.Add(timeList[i].Trim());
 
-                    SecondViewModel.Rows.Add(taskList.Connect(task, importance, data));
+                    SecondViewModel.Rows.Add(taskList.Connect(task, importance, data, time));
                 }
 
                 break;

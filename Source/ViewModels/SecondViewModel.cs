@@ -15,20 +15,25 @@ public partial class SecondViewModel : ViewModelBase
         List<string> task = new List<string>();
         List<string> importance = new List<string>();
         List<string> data = new List<string>();
+        List<string> timeList = new List<string>();
 
         switch (verify)        
         {
             case "Execute":
-                for (int i = 0; i < 5; i++)
-                {
-                    TaskList taskList = new TaskList();
+                DateTime time = DateTime.Now;
+                int M = time.Minute;
+                int H = time.Hour;
+                int DD = time.Day;
+                int MM = time.Month;
 
-                    task.Add("");
-                    importance.Add("");
-                    data.Add("");
+                TaskList taskList = new TaskList();
 
-                    Rows.Add(taskList.Connect(task, importance, data));
-                }
+                task.Add("Demonstration");
+                importance.Add("Low");
+                data.Add($"{DD}/{MM}");
+                timeList.Add($"{H}:{M}");
+
+                Rows.Add(taskList.Connect(task, importance, data, timeList));
                 break;
 
             default:

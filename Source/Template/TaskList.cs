@@ -6,15 +6,17 @@ using CommunityToolkit.Mvvm.ComponentModel;
 namespace Taskeasy_Manager.Source.Template;
 public class TaskList
 {
-    public string TaskColumn { get; set; }
-    public string ImportanceColumn { get; set; }
-    public string DataColumn { get; set; }
+    public string? TaskColumn { get; set; }
+    public string? ImportanceColumn { get; set; }
+    public string? DataColumn { get; set; }
+    public string? TimeColumn { get; set; }
 
-    public TaskList Connect(List<string> task, List<string> importance, List<string> data)
+    public TaskList Connect(List<string> task, List<string> importance, List<string> data, List<string> time)
     {
         task.ForEach(x => connectTask(x));
         importance.ForEach(x => connectImportance(x));
         data.ForEach(x => connectData(x));
+        time.ForEach(x => connectHour(x));
 
         return this;
     }
@@ -32,5 +34,10 @@ public class TaskList
     private void connectData(string text)
     {
         DataColumn = text;
+    }
+
+    private void connectHour(string text)
+    {
+        TimeColumn = text;
     }
 }

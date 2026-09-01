@@ -34,12 +34,18 @@ public partial class ProjectWindow : Window
     private void CreateTask(object sender, RoutedEventArgs args)
     {
         TaskList taskList = new TaskList();
+        DateTime time = DateTime.Now;
+        int M = time.Minute;
+        int H = time.Hour;
+        int DD = time.Day;
+        int MM = time.Month;
 
         List<string> task = [""];
         List<string> importance = [""];
-        List<string> data = [""];
+        List<string> data = [$"{DD}/{MM}"];
+        List<string> hour = [$"{H}:{M}"];
 
-        SecondViewModel.Rows.Add(taskList.Connect(task, importance, data));
+        SecondViewModel.Rows.Add(taskList.Connect(task, importance, data, hour));
     }
 
     private void SaveProj(object sender, RoutedEventArgs args)
@@ -47,16 +53,19 @@ public partial class ProjectWindow : Window
         var task = SecondViewModel.Rows.Select(p => p.TaskColumn).ToList();
         var importance = SecondViewModel.Rows.Select(p => p.ImportanceColumn).ToList();
         var data = SecondViewModel.Rows.Select(p => p.DataColumn).ToList();
+        var time = SecondViewModel.Rows.Select(p => p.TimeColumn).ToList();
 
         SaveProcess.Connect(this.Title);
-        WriteFile(WriteInfosModel(task, importance, data));
+        WriteFile(WriteInfosModel(task, importance, data, time));
     }
 
-    public static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3)
+    public static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3, List<string> info4)
     {
         FilterWord filter = new FilterWord();
 
         return $"""
+        ColumnNumber: {SecondViewModel.Rows.Count}
+
         Task:
         {filter.FilterWordTask(info1)}
 
@@ -65,6 +74,9 @@ public partial class ProjectWindow : Window
 
         Data:
         {filter.FilterWordTask(info3)}
+
+        Time:
+        {filter.FilterWordTask(info4)}
 
         End
         """;
@@ -119,6 +131,14 @@ public partial class ProjectWindow : Window
                     }
                 };
             }            
+        }
+    }
+
+    private void Delete(object sender, RoutedEventArgs args)
+    {
+        if (GridList.SelectedItem is TaskList selectedTask)
+        {
+            SecondViewModel.Rows.Remove(selectedTask);
         }
     }
 }

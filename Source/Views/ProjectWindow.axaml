@@ -17,11 +17,12 @@
         <DataGrid Margin="0" ItemsSource="{Binding Rows}" x:Name="GridList"
             AutoGenerateColumns="False" CanUserResizeColumns="True"
             GridLinesVisibility="All" IsReadOnly="False" Background="Transparent">
-
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tarefa" Binding="{Binding TaskColumn}"/>
                 <DataGridTextColumn Header="Importância" Binding="{Binding ImportanceColumn}"/>
-                <DataGridTextColumn Header="Dia Inicial" Binding="{Binding DataColumn}"/>
+                <DataGridTextColumn Header="Dia" Binding="{Binding DataColumn}"/>
+                <DataGridTextColumn Header="Horário" Binding="{Binding TimeColumn}"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -33,5 +34,8 @@
 
         <Button Grid.Row="1" Content="Escolher Aleatóriamente" HorizontalAlignment="Right"
                 Click="Randomized"  Background="Transparent" Margin="0, 0, 229, 20"/>
+
+        <Button Grid.Row="1" Content="Deletar" HorizontalAlignment="Right"
+                Click="Delete"  Background="Transparent" Margin="0, 0, 429, 20"/>
     </Grid>
 </Window>

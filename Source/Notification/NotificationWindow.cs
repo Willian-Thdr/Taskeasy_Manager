@@ -9,7 +9,7 @@ public class NotificationWindow
     {
         Window message = new Window
         {
-            Width = 350,
+            Width = double.NaN,
             Height = 300,
             Background = new SolidColorBrush(Color.Parse("#d6ceb6")),
             Title = "Message Box"
