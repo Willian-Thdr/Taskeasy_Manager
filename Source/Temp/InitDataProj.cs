@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Models.Controller;
@@ -46,6 +47,17 @@ public partial class InitDataProj : Window
 
     private void CreateFile(object? sender, RoutedEventArgs args)
     {
-        Create(ProjName.Text);
+        string title = new string(ProjName.Text.Where(char.IsLetterOrDigit).ToArray());
+
+        if (!ProjName.Text.Contains(@"[^a-zA-Z0-9\s]"))
+        {
+            NotificationWindow.Message("O nome do arquivo deve conter apenas números e letras.");
+        } 
+        else if (string.IsNullOrEmpty(ProjName.Text))
+        {
+            NotificationWindow.Message("ERROR: Preencha todos o campo do nome.");    
+        }
+
+        Create(title);
     }
 }

@@ -28,5 +28,3 @@ public class FilterWord
         return strList.Trim();
     }
 }
-
-// NotificationWindow.Message("ERROR: Fill in all the fields.");
