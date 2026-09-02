@@ -14,7 +14,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{9453472D-821D-4282-9AD0-971DA2BD3055}
+AppId={{4582ED64-454D-4949-9180-202B385B8081}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -54,7 +54,13 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\Projetos\Taskeasy_Manager\Service\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\av_libglesv2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\libHarfBuzzSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\libHarfBuzzSharp.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\libSkiaSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\libSkiaSharp.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\bin\Release\net10.0\win-x64\publish\Taskeasy_Manager.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\Projetos\Taskeasy_Manager\Service\*"; DestDir: "{app}\Service"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
