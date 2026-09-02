@@ -9,26 +9,38 @@
         Title="Taskeasy_Manager"
         MinWidth="250" MinHeight="200"
         Width="250" Height="200"
-        MaxWidth="500" MaxHeight="400">
+        MaxWidth="500" MaxHeight="400"
+        Icon="/Assets/Icone-oficial-1.ico">
         <Window.Background>
-            <LinearGradientBrush StartPoint="300,250" EndPoint="75,0">
-                <GradientStop Color="#FFDF2808" Offset="0"/>
-                <GradientStop Color="#FF06326D" Offset="1"/>
+            <LinearGradientBrush StartPoint="125,125" EndPoint="0,0">
+                <GradientStop Color="#FF0C69D3" Offset="0"/>
+                <GradientStop Color="#FF0A1AA7" Offset="1"/>
             </LinearGradientBrush>
         </Window.Background>
 
+        <Window.Styles>
+            <Style Selector="Button">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+        </Window.Styles>
+
     <Grid>
         <Label Content="Menu" FontSize="18" Margin="0, 20, 0, 0" HorizontalAlignment="Center" 
-        VerticalAlignment="Top" FontWeight="Bold"/>
+        VerticalAlignment="Top" FontWeight="Bold" Foreground="Black"/>
 
-        <Border Height="2" Background="#50FFFFFF" Margin="0, 48, 0, 0" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Border Height="2" Background="#DABA06" Margin="0, 48, 0, 0" 
+        HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
 
-        <Button Background="#20FFFFFF" BorderBrush="Black" Content="Create new task" 
+        <Button Background="#DABA06" BorderBrush="Black" Content="Create new task" 
         Padding="5, 2, 5, 2" Margin="0, 80, 0, 0" HorizontalAlignment="Center" 
-        VerticalAlignment="Top" CornerRadius="20" Click="CreateTask"/>
+        VerticalAlignment="Top" CornerRadius="20" Click="CreateTask" Foreground="Black"/>
 
-        <Button Background="#20FFFFFF" BorderBrush="Black" Content="Load task" 
+        <Button Background="#DABA06" BorderBrush="Black" Content="Load task" 
         Padding="5, 2, 5, 2" Margin="0, 0, 0, 60" HorizontalAlignment="Center" 
-        VerticalAlignment="Bottom" CornerRadius="20" Click="LoadTask"/>
+        VerticalAlignment="Bottom" CornerRadius="20" Click="LoadTask" Foreground="Black"/>
     </Grid>
 </Window>

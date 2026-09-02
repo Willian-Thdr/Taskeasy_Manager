@@ -119,7 +119,7 @@ public partial class ProjectWindow : Window
             foreach (var row in GridList.GetVisualDescendants().OfType<DataGridRow>())
             {
                 if (row.Index == selectIndex-1)
-                    row.Background = new SolidColorBrush(Color.Parse("#4e8be6"));
+                    row.Background = new SolidColorBrush(Color.Parse("#1d850f"));
                 else
                     row.Background = Brushes.Transparent;
 

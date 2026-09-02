@@ -9,23 +9,42 @@
         MinWidth="300" MinHeight="150"
         MaxWidth="300" MaxHeight="150"
         Title="Criar Lista"
-        Background="#FF474747">
+        Background="#FF474747"
+        Icon="/Assets/Icone-oficial-1.ico">
+
+        <Window.Styles>
+            <Style Selector="Button">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+        </Window.Styles>
+
     <Grid>
+    <Grid.Background>
+        <LinearGradientBrush StartPoint="125,125" EndPoint="0,0">
+                <GradientStop Color="#FF0C69D3" Offset="0"/>
+                <GradientStop Color="#FF0A1AA7" Offset="1"/>
+        </LinearGradientBrush>
+    </Grid.Background>
+
         <Label Content="Criar lista" HorizontalAlignment="Center" 
-               FontSize="20" FontWeight="Bold" Margin="0, 5, 0, 0"/>
+               FontSize="20" FontWeight="Bold" Margin="0, 5, 0, 0" Foreground="Black"/>
 
         <Label Content="Nome:" VerticalAlignment="Center"
-               Margin="20, 5, 0, 0"/>
+               Margin="20, 5, 0, 0" Foreground="Black"/>
 
         <Border BorderBrush="Black" VerticalAlignment="Center" Margin="70, 5, 20, 0"
                 BorderThickness="1" CornerRadius="20">
             <TextBox BorderBrush="Transparent" BorderThickness="0" CornerRadius="20"
-                     Watermark="Nome da lista" HorizontalContentAlignment="Center"
-                     x:Name="ProjName" Background="#50FFFFFF"/>
+                     Watermark="Nome do arquivo" HorizontalContentAlignment="Center"
+                     x:Name="ProjName" Background="#DABA06" Foreground="Black"/>
         </Border>
 
-        <Button Content="Criar" Background="#50FFFFFF" BorderBrush="Black"
+        <Button Content="Criar" Background="#DABA06" BorderBrush="Black"
                 CornerRadius="20" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Margin="0, 5, 20, 10" Click="CreateFile"/>
+                Margin="0, 5, 20, 10" Click="CreateFile" Foreground="Black"/>
     </Grid>
 </Window>

@@ -7,17 +7,37 @@
         x:Class="Taskeasy_Manager.Source.Models.Controller.ProjectWindow"
         x:DataType="vm:SecondViewModel"
         Title="Taskeasy_Manager"
-        Background="#FF474747">
+        Background="#FF474747"
+        Icon="/Assets/Icone-oficial-1.ico">
+
+        <Window.Styles>
+            <Style Selector="Button">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+
+
+            <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="#DABA06"/>
+            </Style>
+        </Window.Styles>
+        
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="750,750" EndPoint="50,50">
+                <GradientStop Color="#FF0C69D3" Offset="0"/>
+                <GradientStop Color="#FF0A1AA7" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <DataGrid Margin="0" ItemsSource="{Binding Rows}" x:Name="GridList"
             AutoGenerateColumns="False" CanUserResizeColumns="True"
             GridLinesVisibility="All" IsReadOnly="False" Background="Transparent">
-            
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tarefa" Binding="{Binding TaskColumn}"/>
                 <DataGridTextColumn Header="Importância" Binding="{Binding ImportanceColumn}"/>
@@ -27,15 +47,19 @@
         </DataGrid>
 
         <Button Grid.Row="1" Content="Criar nova tarefa" HorizontalAlignment="Right" 
-            Click="CreateTask" Background="Transparent" Margin="0, 0, 0, 20"/>
+            Click="CreateTask" Background="#DABA06" Margin="0, 0, 0, 20" CornerRadius="20"
+            Foreground="Black"/>
 
         <Button Grid.Row="1" Content="Salvar" HorizontalAlignment="Right"
-                Click="SaveProj"  Background="Transparent" Margin="0, 0, 150, 20"/>
+                Click="SaveProj"  Background="#DABA06" Margin="0, 0, 150, 20" CornerRadius="20"
+                Foreground="Black"/>
 
         <Button Grid.Row="1" Content="Escolher Aleatóriamente" HorizontalAlignment="Right"
-                Click="Randomized"  Background="Transparent" Margin="0, 0, 229, 20"/>
+                Click="Randomized"  Background="#DABA06" Margin="0, 0, 229, 20" CornerRadius="20"
+                Foreground="Black"/>
 
         <Button Grid.Row="1" Content="Deletar" HorizontalAlignment="Right"
-                Click="Delete"  Background="Transparent" Margin="0, 0, 429, 20"/>
+                Click="Delete"  Background="#DABA06" Margin="0, 0, 429, 20" CornerRadius="20"
+                Foreground="Black"/>
     </Grid>
 </Window>
