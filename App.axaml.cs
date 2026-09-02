@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -53,12 +54,13 @@ public partial class App : Application
 
     private async void jsContact()
     {
-        
+        string way = AppContext.BaseDirectory;
+        string service = Path.Combine(way, "Service", "CheckVersion.js");
+
         startInfo = Process.Start(new ProcessStartInfo
         {
             FileName = "node",
-            Arguments = "CheckVersion.js",
-            WorkingDirectory = @"Source\Service",
+            Arguments = $"\"{service}\"",
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true
