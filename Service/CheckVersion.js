@@ -1,4 +1,4 @@
-const thisVersion = "v1.0.1";
+const thisVersion = "v1.0.2";
 const urlVersion = "https://api.github.com/repos/Willian-Thdr/Taskeasy_Manager/releases/latest";
 const http = require("http");
 let actualVersion;
