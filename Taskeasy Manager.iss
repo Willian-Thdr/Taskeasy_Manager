@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Taskeasy Manager"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "Willian-Thdr"
 #define MyAppURL "https://github.com/Willian-Thdr"
 #define MyAppExeName "Taskeasy_Manager.exe"
