@@ -1,4 +1,2 @@
 # NOTE OF RELEASE
-> - Adding icons;
-> - Adding server;
-> - Adding version cecker.
+> - Adding new columns.

@@ -1,4 +1,4 @@
-# Taskeasy Manager v1.0.1
+# Taskeasy Manager v1.0.2
 
 ## Information
 
