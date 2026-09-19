@@ -35,6 +35,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(3000, () => {
     console.log("Servidor onsline: http://localhost:3000/version");
+    console.log("Connect");
 })
 
 function execute(version) {

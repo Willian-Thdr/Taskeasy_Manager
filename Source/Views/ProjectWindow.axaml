@@ -41,8 +41,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Tarefa" Binding="{Binding TaskColumn}"/>
                 <DataGridTextColumn Header="Importância" Binding="{Binding ImportanceColumn}"/>
-                <DataGridTextColumn Header="Dia" Binding="{Binding DataColumn}"/>
-                <DataGridTextColumn Header="Horário" Binding="{Binding TimeColumn}"/>
+                <DataGridTextColumn Header="Horário de início" Binding="{Binding InitialTime}"/>
+                <DataGridTextColumn Header="Horário de término" Binding="{Binding FinalTime}"/>
+                <DataGridTextColumn Header="Dia de início" Binding="{Binding InitialDay}"/>
+                <DataGridTextColumn Header="Dia final" Binding="{Binding FinalDay}"/>
             </DataGrid.Columns>
         </DataGrid>
 

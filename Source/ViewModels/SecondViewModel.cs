@@ -14,8 +14,10 @@ public partial class SecondViewModel : ViewModelBase
     {
         List<string> task = new List<string>();
         List<string> importance = new List<string>();
-        List<string> data = new List<string>();
-        List<string> timeList = new List<string>();
+        List<string> initialHour = new();
+        List<string> finalHour = new();
+        List<string> initialDay = new();
+        List<string> dinalDay = new();
 
         switch (verify)        
         {
@@ -30,10 +32,12 @@ public partial class SecondViewModel : ViewModelBase
 
                 task.Add("Demonstration");
                 importance.Add("Low");
-                data.Add($"{DD}/{MM}");
-                timeList.Add($"{H}:{M}");
+                initialHour.Add($"{H}:{M}");
+                finalHour.Add("...");
+                initialDay.Add($"{DD}/{MM}");
+                dinalDay.Add("...");
 
-                Rows.Add(taskList.Connect(task, importance, data, timeList));
+                Rows.Add(taskList.Connect(task, importance, initialHour, finalHour, initialDay, dinalDay));
                 break;
 
             default:

@@ -75,21 +75,28 @@ public class OpenExplorer
     
             List<string> Task = new();
             List<string> Importance = new();
-            List<string> Data = new();
-            List<string> Time = new();
+            List<string> InitialHour = new();
+            List<string> FinalHour = new();
+            List<string> InitialDay = new();
+            List<string> FinalDay = new();
 
             string? numColumn = GetBetween(txt, "ColumnNumber:", "Task:");
-            string taskText = GetBetween(txt, "Task:", "Importance:");
-            string importanceText = GetBetween(txt, "Importance:", "Data:");
-            string dataText = GetBetween(txt, "Data:", "Time:");
-            string timeText = GetBetween(txt, "Time:", "End");
+            string? taskText = GetBetween(txt, "Task:", "Importance:");
+            string? importanceText = GetBetween(txt, "Importance:", "Data:");
+            string? initialHour = GetBetween(txt, "InitialHour:", "FinalHour:");
+            string? dinalHour = GetBetween(txt, "FinalHour:", "InitialDay:");
+            string? initialDay = GetBetween(txt, "InitialDay:", "FinalDay:");
+            string? finalDay = GetBetween(txt, "FinalDay:", "End");
 
             Task = taskText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
             Importance = importanceText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
-            Data = dataText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
-            Time = timeText.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            InitialHour = initialHour.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            FinalHour = dinalHour.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            InitialDay = initialDay.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
+            FinalDay = finalDay.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(x => x).ToList();
     
-            LoadLines(int.Parse(numColumn), Task, Importance, Data, Time, "Load");
+            LoadLines(int.Parse(numColumn), Task, Importance, InitialHour, 
+            FinalHour, InitialDay, FinalDay, "Load");
         } catch (Exception e)
         {
             NotificationWindow.Message($"ERROR: {e}");
@@ -113,12 +120,16 @@ public class OpenExplorer
         return text.Substring(startIndex, endIndex - startIndex).Trim();
     }
 
-    public static void LoadLines(int num, List<string> tList, List<string> iList, List<string> dList, List<string> timeList, string verify)
+    public static void LoadLines(int num, List<string> tList, List<string> iList, 
+        List<string> initialHour, List<string> finalHour, 
+        List<string> initialDay, List<string> finalDay, string verify)
     {
         List<string> task = new List<string>();
         List<string> importance = new List<string>();
-        List<string> data = new List<string>();
-        List<string> time = new List<string>();
+        List<string> iHour = new List<string>();
+        List<string> fHour = new List<string>();
+        List<string> iDay = new List<string>();
+        List<string> fDay = new List<string>();
 
         switch (verify)
         {
@@ -129,10 +140,13 @@ public class OpenExplorer
 
                     task.Add(tList[i].Trim());
                     importance.Add(iList[i].Trim());
-                    data.Add(dList[i].Trim());
-                    time.Add(timeList[i].Trim());
+                    iHour.Add(initialHour[i].Trim());
+                    fHour.Add(finalHour[i].Trim());
+                    iDay.Add(initialDay[i].Trim());
+                    fDay.Add(finalDay[i].Trim());
 
-                    SecondViewModel.Rows.Add(taskList.Connect(task, importance, data, time));
+                    SecondViewModel.Rows.Add(taskList.Connect(task, importance, initialHour, 
+                    finalHour, initialDay, finalDay));
                 }
 
                 break;

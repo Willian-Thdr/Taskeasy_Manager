@@ -7,7 +7,6 @@ using Avalonia.Interactivity;
 using Taskeasy_Manager.Source.Template;
 using Taskeasy_Manager.Source.ViewModels;
 using Taskeasy_Manager.Source.Helpers;
-using System.Threading.Tasks;
 using Avalonia.VisualTree;
 using Avalonia.Media;
 using Avalonia.Input;
@@ -37,29 +36,32 @@ public partial class ProjectWindow : Window
         DateTime time = DateTime.Now;
         int M = time.Minute;
         int H = time.Hour;
-        int DD = time.Day;
-        int MM = time.Month;
 
         List<string> task = [""];
         List<string> importance = [""];
-        List<string> data = [$"{DD}/{MM}"];
-        List<string> hour = [$"{H}:{M}"];
+        List<string> initialHour = [$"{H}:{M}"];
+        List<string> finalHour = [""];
+        List<string> initialDay = [""];
+        List<string> finalDay = [""];
 
-        SecondViewModel.Rows.Add(taskList.Connect(task, importance, data, hour));
+        SecondViewModel.Rows.Add(taskList.Connect(task, importance, initialHour, 
+        finalHour, initialDay, finalDay));
     }
 
     private void SaveProj(object sender, RoutedEventArgs args)
     {
         var task = SecondViewModel.Rows.Select(p => p.TaskColumn).ToList();
         var importance = SecondViewModel.Rows.Select(p => p.ImportanceColumn).ToList();
-        var data = SecondViewModel.Rows.Select(p => p.DataColumn).ToList();
-        var time = SecondViewModel.Rows.Select(p => p.TimeColumn).ToList();
+        var initTime = SecondViewModel.Rows.Select(p => p.InitialTime).ToList();
+        var finalTime = SecondViewModel.Rows.Select(p => p.FinalTime).ToList();
+        var initDay = SecondViewModel.Rows.Select(p => p.InitialDay).ToList();
+        var finalday = SecondViewModel.Rows.Select(p => p.FinalDay).ToList();
 
         SaveProcess.Connect(this.Title);
-        WriteFile(WriteInfosModel(task, importance, data, time));
+        WriteFile(WriteInfosModel(task, importance, initTime, finalTime, initDay, finalday));
     }
 
-    public static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3, List<string> info4)
+    public static string WriteInfosModel(List<string> info1, List<string> info2, List<string> info3, List<string> info4, List<string> info5, List<string> info6)
     {
         FilterWord filter = new FilterWord();
 
@@ -72,11 +74,17 @@ public partial class ProjectWindow : Window
         Importance:
         {filter.FilterWordTask(info2)}
 
-        Data:
+        InitialHour:
         {filter.FilterWordTask(info3)}
 
-        Time:
+        FinalHour:
         {filter.FilterWordTask(info4)}
+
+        InitialDay:
+        {filter.FilterWordTask(info5)}
+
+        FinalDay:
+        {filter.FilterWordTask(info6)}
 
         End
         """;

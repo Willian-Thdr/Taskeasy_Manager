@@ -8,15 +8,20 @@ public class TaskList
 {
     public string? TaskColumn { get; set; }
     public string? ImportanceColumn { get; set; }
-    public string? DataColumn { get; set; }
-    public string? TimeColumn { get; set; }
+    public string? InitialTime { get; set; }
+    public string? FinalTime { get; set; }
+    public string? InitialDay { get; set; }
+    public string? FinalDay { get; set; }
 
-    public TaskList Connect(List<string> task, List<string> importance, List<string> data, List<string> time)
+    public TaskList Connect(List<string> task, List<string> importance, List<string> initialTime, 
+    List<string> finalTime, List<string> initialDay, List<string> finalDay)
     {
         task.ForEach(x => connectTask(x));
         importance.ForEach(x => connectImportance(x));
-        data.ForEach(x => connectData(x));
-        time.ForEach(x => connectHour(x));
+        initialTime.ForEach(x => connectInitialHour(x));
+        finalTime.ForEach(x => connectFinalHour(x));
+        initialDay.ForEach(x => connectInitialDay(x));
+        finalDay.ForEach(x => connectFinalDay(x));
 
         return this;
     }
@@ -31,13 +36,23 @@ public class TaskList
         ImportanceColumn = text;
     }
 
-    private void connectData(string text)
+    private void connectInitialHour(string text)
     {
-        DataColumn = text;
+        InitialTime = text;
     }
 
-    private void connectHour(string text)
+    private void connectFinalHour(string text)
     {
-        TimeColumn = text;
+        FinalTime = text;
+    }
+
+    private void connectInitialDay(string text)
+    {
+        InitialDay = text;
+    }
+
+    private void connectFinalDay(string text)
+    {
+        FinalDay = text;
     }
 }
