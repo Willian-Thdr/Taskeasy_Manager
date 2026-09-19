@@ -82,7 +82,7 @@ public class OpenExplorer
 
             string? numColumn = GetBetween(txt, "ColumnNumber:", "Task:");
             string? taskText = GetBetween(txt, "Task:", "Importance:");
-            string? importanceText = GetBetween(txt, "Importance:", "Data:");
+            string? importanceText = GetBetween(txt, "Importance:", "InitialHour:");
             string? initialHour = GetBetween(txt, "InitialHour:", "FinalHour:");
             string? dinalHour = GetBetween(txt, "FinalHour:", "InitialDay:");
             string? initialDay = GetBetween(txt, "InitialDay:", "FinalDay:");
